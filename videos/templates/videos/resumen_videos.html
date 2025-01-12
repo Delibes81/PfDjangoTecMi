@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resumen de Videos</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <h1>Resumen de Videos Subidos</h1>
+    <h2>Usuario: {{ usuario.nombre }} ({{ usuario.id_nomina }})</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre del Video</th>
+                <th>Extensión</th>
+                <th>Tamaño (MB)</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for video_usuario in videos_usuario %}
+                <tr>
+                    <td>{{ video_usuario.id_video.nombre_video }}</td>
+                    <td>{{ video_usuario.id_video.extension_video }}</td>
+                    <td>{{ video_usuario.id_video.tamano_video }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <h2>Historial de Videos Subidos</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Usuario</th>
+                <th>Nombre del Video</th>
+                <th>Extensión</th>
+                <th>Tamaño (MB)</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for video_usuario in historial_videos %}
+                <tr>
+                    <td>{{ video_usuario.id_usuario.nombre }}</td>
+                    <td>{{ video_usuario.id_video.nombre_video }}</td>
+                    <td>{{ video_usuario.id_video.extension_video }}</td>
+                    <td>{{ video_usuario.id_video.tamano_video }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

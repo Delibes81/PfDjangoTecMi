@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Captura de Datos de Videos</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <h1>Captura de Datos de Videos</h1>
+    <form method="post">
+        {% csrf_token %}
+        {% for i in cantidad_videos %}
+            <div>
+                <label for="nombre_video_{{ i|add:1 }}">Nombre del video {{ i|add:1 }}:</label>
+                <input type="text" name="nombre_video_{{ i }}" id="nombre_video_{{ i|add:1 }}" required>
+            </div>
+            <div>
+                <label for="extension_video_{{ i|add:1 }}">Extensión del video {{ i|add:1 }}:</label>
+                <input type="text" name="extension_video_{{ i }}" id="extension_video_{{ i|add:1 }}" required>
+            </div>
+            <div>
+                <label for="tamano_video_{{ i|add:1 }}">Tamaño del video {{ i|add:1 }} (MB):</label>
+                <input type="number" name="tamano_video_{{ i }}" id="tamano_video_{{ i|add:1 }}" required>
+            </div>
+        {% endfor %}
+        <button type="submit">Guardar Videos</button>
+    </form>
+</body>
+</html>
